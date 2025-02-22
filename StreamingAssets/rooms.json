@@ -1,0 +1,82 @@
+{
+	"rooms": [
+	  {
+		"uniqueID": "R001",
+		"roomNumber": "101",
+		"roomName": "Side Gate",
+		"designatedPerson": "",
+		"comment": "",
+		"positionConstraints": {
+		  "x": -56.3,
+		  "y": 13,
+		  "z": 24.29
+		},
+		"rotationConstraints": {
+		  "x": 0.0,
+		  "y": 0.0,
+		  "z": 0.0
+		},
+		"floorNumber": "F2",
+		"department": ""
+	  },
+	  {
+		"uniqueID": "R002",
+		"roomNumber": "102",
+		"roomName": "X-RAY",
+		"designatedPerson": "",
+		"comment": "",
+		"positionConstraints": {
+		  "x": -42.91,
+		  "y": 1,
+		  "z": -56.51
+		},
+		"rotationConstraints": {
+		  "x": 0.0,
+		  "y": 90.0,
+		  "z": 0.0
+		},
+		"floorNumber": "F1",
+		"department": "Executive"
+	  },
+          {
+		"uniqueID": "R004",
+		"roomNumber": "104",
+		"roomName": "Sample Collection",
+		"designatedPerson": "",
+		"comment": "",
+		"positionConstraints": {
+		  "x": 55.1,
+		  "y": 14.21,
+		  "z": -56.29
+		},
+		"rotationConstraints": {
+		  "x": 0.0,
+		  "y": 90.0,
+		  "z": 0.0
+		},
+		"floorNumber": "F1",
+		"department": "Executive"
+	  },
+
+	  {
+		"uniqueID": "R003",
+		"roomNumber": "",
+		"roomName": "Cardiac OPD ",
+		"designatedPerson": "Dr. Ashok",
+		"comment": "",
+		"positionConstraints": {
+		  "x": 58.75,
+		  "y": 13,
+		  "z": 40.3
+		},
+		"rotationConstraints": {
+		  "x": 0.0,
+		  "y": 0.0,
+		  "z": 0.0
+		},
+		"floorNumber": "F2",
+		"department": ""
+	  }
+	]
+  }
+  

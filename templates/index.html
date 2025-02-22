@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Redirector</title>
+    <script>
+        function detectOS() {
+            var userAgent = window.navigator.userAgent,
+                platform = window.navigator.platform,
+                macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+                windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+                iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+
+            if (macosPlatforms.indexOf(platform) !== -1) {
+                return 'Mac OS';
+            } else if (iosPlatforms.indexOf(platform) !== -1) {
+                return 'iOS';
+            } else if (windowsPlatforms.indexOf(platform) !== -1) {
+                return 'Windows';
+            } else if (/Android/.test(userAgent)) {
+                return 'Android';
+            } else if (/Linux/.test(platform)) {
+                return 'Linux';
+            }
+
+            return 'Unknown OS';
+        }
+
+        function redirectBasedOnOS() {
+            var os = detectOS();
+            if (os === 'Windows' || os === 'Mac OS' || os === 'Linux') {
+                window.location.href = '{{ url_for("access_denied") }}';
+            } else if (os === 'iOS' || os === 'Android') {
+                window.location.href = '{{ url_for("redirect_route") }}';  // This now correctly refers to the 'redirect' route
+            } else {
+                // For unknown OS, we'll redirect to access denied as a precaution
+                window.location.href = '{{ url_for("access_denied") }}';
+            }
+        }
+
+        // Call the redirect function when the page loads
+        window.onload = redirectBasedOnOS;
+    </script>
+</head>
+<body>
+    <p>Detecting device and redirecting...</p>
+</body>
+</html>
+
