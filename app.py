@@ -41,7 +41,7 @@ def redirect_route():
     # Set the session flags to allow access to the internal pages.
     session['access_allowed'] = True
     session['internal_access'] = True
-    return redirect(url_for('acess'))
+    return redirect(url_for('access'))
 
 if __name__ == '__main__':
     app.run(debug=True)
