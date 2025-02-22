@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Device Redirector</title>
     <script>
-        function detectOS() {
-            var userAgent = window.navigator.userAgent,
-                platform = window.navigator.platform,
-                macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+        function getOS() {
+            const userAgent = window.navigator.userAgent,
+                platform = window.navigator?.userAgentData?.platform || window.navigator.platform,
+                macosPlatforms = ['macOS', 'Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
                 windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
                 iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+            let os = null;
 
             if (macosPlatforms.indexOf(platform) !== -1) {
-                return 'Mac OS';
+                os = 'Mac OS';
             } else if (iosPlatforms.indexOf(platform) !== -1) {
-                return 'iOS';
+                os = 'iOS';
             } else if (windowsPlatforms.indexOf(platform) !== -1) {
-                return 'Windows';
+                os = 'Windows';
             } else if (/Android/.test(userAgent)) {
-                return 'Android';
+                os = 'Android';
             } else if (/Linux/.test(platform)) {
-                return 'Linux';
+                os = 'Linux';
             }
 
-            return 'Unknown OS';
+            return os;
         }
 
+        alert(getOS())
+
         function redirectBasedOnOS() {
-            var os = detectOS();
+            var os = getOS();
             if (os === 'Windows' || os === 'Mac OS' || os === 'Linux') {
                 window.location.href = '{{ url_for("access_denied") }}';
             } else if (os === 'iOS' || os === 'Android') {
@@ -43,8 +47,9 @@
         window.onload = redirectBasedOnOS;
     </script>
 </head>
+
 <body>
     <p>Detecting device and redirecting...</p>
 </body>
-</html>
 
+</html>
