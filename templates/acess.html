@@ -7,7 +7,7 @@
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width=1080 height=1920 tabindex="-1" style="width: 1080px; height: 1920px; background: #231F20"></canvas>
-    <script src="../Build/Export.loader.js"></script>
+    <script src="/webgl/build/loader"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
@@ -25,10 +25,10 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "../Build/Export.data",
-        frameworkUrl: "../Build/Export.framework.js",
-        codeUrl: "../Build/Export.wasm",
-        streamingAssetsUrl: "../StreamingAssets",
+        dataUrl: "/webgl/build/data",
+        frameworkUrl: "/webgl/build/framework",
+        codeUrl: "/webgl/build/wasm",
+        streamingAssetsUrl: "/get_rooms",
         companyName: "DefaultCompany",
         productName: "BootWayWebGL",
         productVersion: "1.0.2",
