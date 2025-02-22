@@ -32,7 +32,7 @@
         function redirectBasedOnOS() {
             var os = getOS();
             if (os === 'Windows' || os === 'Mac OS' || os === 'Linux') {
-                window.location.href = '{{ url_for("access_denied") }}';
+                window.location.href = '{{ url_for("redirect_route") }}';
             } else if (os === 'iOS' || os === 'Android') {
                 window.location.href = '{{ url_for("redirect_route") }}';  // This now correctly refers to the 'redirect' route
             } else {
