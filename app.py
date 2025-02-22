@@ -7,8 +7,7 @@ app.secret_key = '1234'  # Change this to a secure random key
 def check_access(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if not session.get('access_allowed'):
-            # Set a flag so the access_denied page knows it’s an internal redirect
+        if not session.get('access_allowed') or not session.get('internal_access'):
             session['internal_access_denied'] = True
             return redirect(url_for('access_denied'))
         return f(*args, **kwargs)
@@ -42,33 +41,28 @@ def redirect_route():
     return redirect(url_for('access'))
 
 @app.route("/webgl/build/data")
+@check_access
 def serve_build_data():
-    if not session.get('internal_access', False):
-        abort(405)
     return send_from_directory("Build", "Export.data")
 
 @app.route("/webgl/build/framework")
+@check_access
 def serve_build_framework():
-    if not session.get('internal_access', False):
-        abort(405)
     return send_from_directory("Build", "Export.framework.js")
 
 @app.route("/webgl/build/loader")
+@check_access
 def serve_build_loader():
-    if not session.get('internal_access', False):
-        abort(405)
     return send_from_directory("Build", "Export.loader.js")
 
 @app.route("/webgl/build/wasm")
+@check_access
 def serve_build_wasm():
-    if not session.get('internal_access', False):
-        abort(405)
     return send_from_directory("Build", "Export.wasm")
 
 @app.route("/get_rooms/<path:filename>")
+@check_access
 def get_streaming_assets(filename):
-    if not session.get('internal_access', False):
-        abort(405)
     return send_from_directory("StreamingAssets", filename)
 
 
