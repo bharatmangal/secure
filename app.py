@@ -60,6 +60,10 @@ def serve_build_loader():
 def serve_build_wasm():
     return send_from_directory("Build", "Export.wasm")
 
+@app.route("/loaderio-3669706db4ff2455a390082f75995425")
+def loaderio():
+    return render_template("loaderio-3669706db4ff2455a390082f75995425")
+
 @app.route("/get_rooms/<path:filename>")
 @require_session_access
 def get_streaming_assets(filename):
